@@ -23,7 +23,7 @@
 }
 
 .nav-header img {
-  background-color: var(--clr-primary-5);
+  height: 50px;
   margin-bottom: 0.375rem;
 }
 

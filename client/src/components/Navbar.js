@@ -1,6 +1,7 @@
 import React from "react";
-import logo from "../img/LogoMDbig.jpg";
+import logo from "../img/LogoMDbig.svg";
 import { FaAlignRight } from "react-icons/fa";
+import PageLinks from "../constants/links";
 import "../css/Navbar.css";
 
 function Header() {
@@ -13,6 +14,7 @@ function Header() {
           <button type="button" className="toggle-btn">
             <FaAlignRight></FaAlignRight>
           </button>
+          <PageLinks styleClass="nav-links"></PageLinks>
         </div>
       </div>
     </div>
