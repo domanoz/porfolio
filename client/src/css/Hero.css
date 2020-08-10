@@ -69,12 +69,13 @@
   .hero-img {
     display: block;
     position: relative;
-    border-radius: 50%;
+    border-top-right-radius: 50%;
+    border-bottom-right-radius: 50%;
     height: 100%;
     background-size: cover;
     background-position: center;
     grid-row: 1/1;
-    grid-column: 6/-1;
+    grid-column: 7/-1;
   }
 }
 
