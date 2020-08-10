@@ -14,8 +14,8 @@ function Header() {
           <button type="button" className="toggle-btn">
             <FaAlignRight></FaAlignRight>
           </button>
-          <PageLinks styleClass="nav-links"></PageLinks>
         </div>
+        <PageLinks styleClass="nav-links"></PageLinks>
       </div>
     </div>
   );
