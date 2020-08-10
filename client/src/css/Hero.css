@@ -25,10 +25,6 @@
   display: none;
 }
 
-/* .hero-image-main img {
-  position: absolute;
-} */
-
 .hero-info h4 {
   color: var(--clr-grey-5);
 }
@@ -52,22 +48,6 @@
     background: var(--clr-white);
   }
 
-  .hero-image-main img {
-    /* position: absolute; */
-    top: 0;
-    left: 0;
-    height: 80vh;
-  }
-
-  .hero-image-main video {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
-  }
-
   .hero-center {
     grid-template-columns: repeat(12, 1fr);
   }
@@ -81,8 +61,17 @@
     grid-column: 1 / span 8;
   }
 
+  .img-wrapper {
+    position: relative;
+    overflow: hidden;
+  }
+
   .hero-img {
     display: block;
+    position: relative;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
     grid-row: 1/1;
     grid-column: 6/-1;
   }
