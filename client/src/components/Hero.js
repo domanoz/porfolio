@@ -8,6 +8,7 @@ function Hero() {
   return (
     <header className="hero">
       <div className="section-center hero-center">
+        <img className="hero-img" src={heroimg} alt="" />
         <article className="hero-info">
           <div>
             <div className="underline"></div>
@@ -19,8 +20,6 @@ function Hero() {
             <SocialLinks />
           </div>
         </article>
-
-        <img className="hero-img" src={heroimg} alt="" />
       </div>
     </header>
   );

@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "../img/LogoMDbig.svg";
+import logo from "../img/logo-svg.svg";
 import { FaAlignRight } from "react-icons/fa";
 import PageLinks from "../constants/links";
 import "../css/Navbar.css";
