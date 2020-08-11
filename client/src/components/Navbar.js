@@ -9,8 +9,9 @@ function Header() {
     <div className="navbar">
       <div className="nav-center">
         <div className="nav-header">
-          <img src={logo} alt="Doman's logo" />
-
+          <a href="/">
+            <img src={logo} alt="Doman's logo" />
+          </a>
           <button type="button" className="toggle-btn">
             <FaAlignRight></FaAlignRight>
           </button>
