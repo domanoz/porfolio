@@ -1,9 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Title from "./Title";
-import services from "../constants/services";
+// import services from "../constants/services";
 import "../css/Service.css";
+import { connect } from "react-redux";
+import * as actionCreators from "../actions";
 
-function Services() {
+const Services = (props) => {
+  const { services, getServices } = props;
+
+  useEffect(() => {
+    getServices();
+  }, []);
+
   return (
     <section className="section bg-grey">
       <Title title="services" />
@@ -21,6 +29,6 @@ function Services() {
       </div>
     </section>
   );
-}
+};
 
-export default Services;
+export default connect((state) => state, actionCreators)(Services);
