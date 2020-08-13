@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import Title from "./Title";
-// import services from "../constants/services";
 import "../css/Service.css";
 import { connect } from "react-redux";
 import * as actionCreators from "../actions";

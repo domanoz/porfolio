@@ -34,7 +34,48 @@ export function servicesReducer(state = initialServicesState, action) {
   }
 }
 
-export function jobsReducer(state = [], action) {
+const initialJobsState = [
+  {
+    id: 0,
+    company: "Example company",
+    position: "Data analist",
+    description: [
+      {
+        id: 1,
+        name: "Example desc  lorem ipsum bla",
+      },
+      {
+        id: 2,
+        name: "Example description lorem ipsum bla bla bal",
+      },
+    ],
+  },
+  {
+    id: 1,
+    company: "Example company 2",
+    position: "Data analist 2",
+    description: [
+      {
+        id: 1,
+        name: "Example desc  lorem ipsum bla 222",
+      },
+      {
+        id: 2,
+        name: "Example description lorem ipsum bla bla bal 222",
+      },
+    ],
+  },
+];
+export function jobsReducer(state = initialJobsState, action) {
+  switch (action.type) {
+    case types.VIEW:
+      return state;
+    default:
+      return state;
+  }
+}
+
+export function projectsReducer(state = [], action) {
   switch (action.type) {
     case types.VIEW:
       return state;
