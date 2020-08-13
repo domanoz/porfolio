@@ -75,7 +75,48 @@ export function jobsReducer(state = initialJobsState, action) {
   }
 }
 
-export function projectsReducer(state = [], action) {
+const initialProjectsState = [
+  {
+    index: 0,
+    github: "https://github.com/domanoz/dogLovers-forum",
+    image:
+      "https://image.shutterstock.com/z/stock-photo-project-management-scheduling-concept-with-gantt-chart-planning-with-tasks-and-milestones-to-1148670914.jpg",
+    title: "Example title",
+    description: "Example description of the project",
+    url: "https://doglovers-dd3c5.web.app/",
+    stack: [
+      {
+        id: 0,
+        title: "example stack 1",
+      },
+      {
+        id: 1,
+        title: "example stack 2",
+      },
+    ],
+  },
+  {
+    index: 1,
+    github: "https://github.com/domanoz/dogLovers-forum",
+    image:
+      "https://image.shutterstock.com/z/stock-photo-project-management-scheduling-concept-with-gantt-chart-planning-with-tasks-and-milestones-to-1148670914.jpg",
+    title: "Example title2",
+    description: "Example description of the project2",
+    url: "https://doglovers-dd3c5.web.app/",
+    stack: [
+      {
+        id: 0,
+        title: "example stack 12",
+      },
+      {
+        id: 1,
+        title: "example stack 23",
+      },
+    ],
+  },
+];
+
+export function projectsReducer(state = initialProjectsState, action) {
   switch (action.type) {
     case types.VIEW:
       return state;
