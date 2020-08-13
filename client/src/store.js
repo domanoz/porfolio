@@ -1,12 +1,18 @@
 import { createStore, combineReducers, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
-import { servicesReducer, jobsReducer, projectsReducer } from "./reducers";
+import {
+  servicesReducer,
+  jobsReducer,
+  projectsReducer,
+  aboutReducer,
+} from "./reducers";
 import { loadState, saveState } from "./utils";
 import throttle from "lodash/throttle";
 
 const persistedStateKeysInLocalStorage = ["services"];
 const store = createStore(
   combineReducers({
+    about: aboutReducer,
     services: servicesReducer,
     jobs: jobsReducer,
     projects: projectsReducer,

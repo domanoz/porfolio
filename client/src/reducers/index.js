@@ -124,3 +124,12 @@ export function projectsReducer(state = initialProjectsState, action) {
       return state;
   }
 }
+
+export function aboutReducer(state = [], action) {
+  switch (action.type) {
+    case types.VIEW:
+      return state;
+    default:
+      return state;
+  }
+}
