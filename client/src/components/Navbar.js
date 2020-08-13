@@ -4,7 +4,7 @@ import { FaAlignRight } from "react-icons/fa";
 import PageLinks from "../constants/links";
 import "../css/Navbar.css";
 
-function Header() {
+function Navbar({ toggleSidebar }) {
   return (
     <div className="navbar">
       <div className="nav-center">
@@ -12,7 +12,7 @@ function Header() {
           <a href="/">
             <img src={logo} alt="Doman's logo" />
           </a>
-          <button type="button" className="toggle-btn">
+          <button type="button" className="toggle-btn" onClick={toggleSidebar}>
             <FaAlignRight></FaAlignRight>
           </button>
         </div>
@@ -22,4 +22,4 @@ function Header() {
   );
 }
 
-export default Header;
+export default Navbar;

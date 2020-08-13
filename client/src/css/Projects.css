@@ -10,7 +10,9 @@
 .project-img {
   border-top-left-radius: var(--radius);
   border-top-right-radius: var(--radius);
+  background-color: var(--clr-primary-5);
   height: 19rem;
+  justify-self: center;
   z-index: 1;
 }
 
@@ -21,7 +23,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(to bottom right, var(--clr-primary-5), #222);
+  background: var(--clr-primary-5);
   opacity: 0.85;
   transition: var(--transition);
 }
