@@ -10,7 +10,7 @@ const Jobs = (props) => {
   const { jobs, getJobs } = props;
 
   useEffect(() => {
-    getJobs();
+    // getJobs();
   }, []);
 
   const [value, setValue] = React.useState(0);

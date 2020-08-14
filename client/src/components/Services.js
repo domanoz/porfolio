@@ -8,7 +8,7 @@ const Services = (props) => {
   const { services, getServices } = props;
 
   useEffect(() => {
-    getServices();
+    // getServices();
   }, []);
 
   return (

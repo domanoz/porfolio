@@ -125,7 +125,28 @@ export function projectsReducer(state = initialProjectsState, action) {
   }
 }
 
-export function aboutReducer(state = [], action) {
+const initialAboutState = {
+  info:
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sodales mauris a elit viverra, vel molestie sapien ornare. Quisque mollis vehicula egestas. Donec consectetur blandit orci, eget mollis ante sagittis et. Proin eu arcu vel est hendrerit imperdiet. Etiam consequat urna quis risus volutpat dapibus. Cras neque urna, posuere eu lorem nec, elementum hendrerit eros. Nam porttitor dui at erat consectetur auctor. Aliquam efficitur porta porta. Donec sed sem tincidunt, imperdiet magna ac, suscipit massa. Suspendisse quis gravida nibh. Quisque sit amet neque ut est aliquet dapibus aliquet at est. Curabitur efficitur molestie dui, in congue quam. Sed euismod pharetra sapien, vitae pellentesque nisl bibendum at.",
+  description: "Example description of the project",
+  url: "https://doglovers-dd3c5.web.app/",
+  stack: [
+    {
+      id: 0,
+      title: "example stack 1",
+    },
+    {
+      id: 1,
+      title: "example stack 2",
+    },
+    {
+      id: 2,
+      title: "example stack 3",
+    },
+  ],
+};
+
+export function aboutReducer(state = initialAboutState, action) {
   switch (action.type) {
     case types.VIEW:
       return state;

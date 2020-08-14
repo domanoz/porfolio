@@ -1,13 +1,17 @@
 import React from "react";
-import Navbar from "./components/Navbar";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
+//COMPONENTS
+import Navbar from "./components/Navbar";
 import Projects from "./components/Projects";
 import Footer from "./components/Footer";
 import Sidebar from "./components/Sidebar";
+
+//PAGES
 import Home from "./pages/Home";
 import Contact from "./pages/Contact";
+import About from "./pages/About";
 
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 function App() {
   const [isOpen, setIsOpen] = React.useState(false);
   const toggleSidebar = () => {
@@ -24,7 +28,10 @@ function App() {
             <Home />
           </Route>
           <Route path="/projects">
-            <Projects />
+            <Projects title="Projects" />
+          </Route>
+          <Route path="/about">
+            <About title="About" />
           </Route>
           <Route path="/contact">
             <Contact />

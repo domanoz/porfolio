@@ -11,7 +11,7 @@ const Projects = (props) => {
   const { projects, getProjects, title, showLink } = props;
 
   useEffect(() => {
-    getProjects();
+    // getProjects();
   }, []);
 
   return (
