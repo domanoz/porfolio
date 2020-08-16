@@ -19,7 +19,7 @@ if (config.node_env === "development") {
 }
 server.use(express.json());
 
-server.get("/", (req, res) => {
+server.get("/api/v1/", (req, res) => {
   res.status(200).json({ message: "Server is running" });
 });
 

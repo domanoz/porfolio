@@ -1,0 +1,28 @@
+{
+  "name": "portfolio",
+  "version": "1.0.0",
+  "description": "portfolio",
+  "main": "index.js",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "helmet": "^4.1.0",
+    "knex": "^0.21.5-next2",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/domanoz/porfolio.git"
+  },
+  "author": "Mikołaj Domański",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/domanoz/porfolio/issues"
+  },
+  "homepage": "https://github.com/domanoz/porfolio#readme"
+}
