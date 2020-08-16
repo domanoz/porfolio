@@ -14,8 +14,8 @@ const server = express();
 server.use(cors());
 server.use(helmet());
 
-if (config.node_env === "development") {
-  app.use(morgan("dev"));
+if (config.env === "development") {
+  server.use(morgan("dev"));
 }
 server.use(express.json());
 
