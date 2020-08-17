@@ -6,7 +6,7 @@ exports.up = async (knex) => {
       jobs.string("position").notNullable();
     }),
 
-    knex.schema.createTable("jobs_desciption", (jobs_desciption) => {
+    knex.schema.createTable("jobs_description", (jobs_desciption) => {
       jobs_desciption.increments().notNullable();
       jobs_desciption.string("name").notNullable();
       jobs_desciption
@@ -21,6 +21,7 @@ exports.up = async (knex) => {
 
 exports.down = async (knex) => {
   await Promise.all([
+    knex.schema.dropTableIfExists("jobs_description"),
     knex.schema.dropTableIfExists("jobs_desciption"),
     knex.schema.dropTableIfExists("jobs"),
   ]);
