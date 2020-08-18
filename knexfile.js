@@ -41,7 +41,9 @@ module.exports = {
 
   production: {
     client: "pg",
-    connection: config.productionDB,
+    connection: {
+      filename: "./database/doman.db3",
+    },
     migrations: {
       directory: "./database/migrations",
     },

@@ -25,6 +25,6 @@ server.get("/api/v1/", (req, res) => {
 
 server.use("/api/v1/about", aboutRouter);
 server.use("/api/v1/projects", projectsRouter);
-server.use("/api/v1/constact", contactRouter);
+server.use("/api/v1/contact", contactRouter);
 
 module.exports = server;

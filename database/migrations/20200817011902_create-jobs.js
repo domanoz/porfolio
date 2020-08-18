@@ -22,7 +22,6 @@ exports.up = async (knex) => {
 exports.down = async (knex) => {
   await Promise.all([
     knex.schema.dropTableIfExists("jobs_description"),
-    knex.schema.dropTableIfExists("jobs_desciption"),
     knex.schema.dropTableIfExists("jobs"),
   ]);
 };
