@@ -5,6 +5,7 @@ const morgan = require("morgan");
 
 const config = require("../config");
 
+const homeRouter = require("../routes/homeRouter");
 const aboutRouter = require("../routes/aboutRouter");
 const projectsRouter = require("../routes/projectsRouter");
 const contactRouter = require("../routes/contactRouter");
@@ -19,10 +20,7 @@ if (config.env === "development") {
 }
 server.use(express.json());
 
-server.get("/api/v1/", (req, res) => {
-  res.status(200).json({ message: "Server is running" });
-});
-
+server.use("/api/v1/", homeRouter);
 server.use("/api/v1/about", aboutRouter);
 server.use("/api/v1/projects", projectsRouter);
 server.use("/api/v1/contact", contactRouter);
