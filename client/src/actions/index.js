@@ -3,13 +3,6 @@ import axios from "axios";
 
 const server = "http://localhost:4000";
 
-// export const showJob = () => (id) => {
-//   return {
-//     type: types.SHOW_JOB,
-//     payload: id,
-//   };
-// };
-
 export const getServices = () => (dispatch) => {
   axios.get(`${server}/api/v1/services`).then(({ data: services }) => {
     dispatch({
@@ -28,6 +21,20 @@ export const getJobs = () => (dispatch) => {
   });
 };
 
-export const getProjects = () => (dispatch) => {};
+export const getProjects = () => (dispatch) => {
+  axios.get(`${server}/api/v1/projects`).then(({ data: projects }) => {
+    dispatch({
+      type: types.SET_PROJECTS,
+      payload: projects,
+    });
+  });
+};
 
-export const getAbout = () => (dispatch) => {};
+export const getAbout = () => (dispatch) => {
+  axios.get(`${server}/api/v1/about`).then(({ data: about }) => {
+    dispatch({
+      type: types.SET_ABOUT,
+      payload: about,
+    });
+  });
+};

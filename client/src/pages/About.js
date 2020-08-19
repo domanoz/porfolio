@@ -9,11 +9,15 @@ import aboutimg from "../img/about-img-main.png";
 import "../css/About.css";
 
 function About(props) {
-  const { about, title } = props;
+  const { about, getAbout, title } = props;
 
   useEffect(() => {
-    // getAbout();
-  }, []);
+    getAbout();
+  }, [getAbout]);
+
+  if (!about.length) {
+    return <div> Loading ... </div>;
+  }
 
   return (
     <section className="about-page">
@@ -21,9 +25,9 @@ function About(props) {
         <img className="about-img" src={aboutimg} alt="" />
         <article className="about-text">
           <Title title={title} />
-          <p>{about.info}</p>
+          <p>{about[0].info}</p>
           <div className="about-stack">
-            {about.stack.map((item) => {
+            {about[0].stack.map((item) => {
               return <span key={item.id}>{item.title}</span>;
             })}
           </div>

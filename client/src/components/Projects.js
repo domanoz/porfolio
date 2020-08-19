@@ -8,18 +8,18 @@ import * as actionCreators from "../actions";
 import "../css/Projects.css";
 
 const Projects = (props) => {
-  const { projects, title, showLink } = props;
+  const { projects, getProjects, title, showLink } = props;
 
   useEffect(() => {
-    // getProjects();
-  }, []);
+    getProjects();
+  }, [getProjects]);
 
   return (
     <section className="section projects">
       <Title title={title} />
       <div className="section-center projects-center">
         {projects.map((project, index) => {
-          return <Project key={project.index} index={index} {...project} />;
+          return <Project key={project.id} index={index} {...project} />;
         })}
       </div>
       {showLink && (

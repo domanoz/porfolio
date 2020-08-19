@@ -3,13 +3,14 @@ import Title from "./Title";
 import "../css/Service.css";
 import { connect } from "react-redux";
 import * as actionCreators from "../actions";
+import { FaCode, FaSketch, FaAndroid } from "react-icons/fa";
 
 const Services = (props) => {
   const { services, getServices } = props;
 
   useEffect(() => {
     getServices();
-  }, []);
+  }, [getServices]);
 
   return (
     <section className="section bg-grey">
@@ -18,7 +19,13 @@ const Services = (props) => {
         {services.map((service) => {
           return (
             <article key={service.id} className="service">
-              {service.icon}
+              {service.icon === "FaCode" ? (
+                <FaCode className="service-icon" />
+              ) : service.icon === "FaSketch" ? (
+                <FaSketch className="service-icon" />
+              ) : (
+                <FaAndroid className="service-icon" />
+              )}
               <h4>{service.title}</h4>
               <div className="underline"></div>
               <p>{service.text}</p>

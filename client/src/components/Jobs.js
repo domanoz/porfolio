@@ -12,13 +12,13 @@ const Jobs = (props) => {
 
   useEffect(() => {
     getJobs();
-  }, []);
+  }, [getJobs]);
 
   if (!jobs.length) {
     return <div>Loading...</div>;
   }
 
-  const { company, position, date, description } = jobs[value];
+  const { company, position, description } = jobs[value];
 
   return (
     <section className="section jobs">
