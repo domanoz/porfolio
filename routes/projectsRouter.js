@@ -4,7 +4,7 @@ const Projects = require("../models/projectsModel");
 router.get("/", async (req, res, next) => {
   try {
     const projects = await Projects.getAllProjects();
-    if (projects) {
+    if (projects.length) {
       res.status(200).json(projects);
     } else {
       next({ message: "No projects.", status: 404 });

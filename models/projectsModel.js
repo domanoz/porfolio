@@ -1,16 +1,38 @@
 const db = require("../database/dbConfig");
+const knexnest = require("knexnest");
 
 const getAllProjects = (filter) => {
+  const sql = db("projects")
+    .select(
+      "projects.id AS _id",
+      "projects.title AS _title",
+      "projects.description AS _description",
+      "projects.github AS _github",
+      "projects.url AS _url",
+      "projects.image AS _image",
+      "project_stack.id AS _stack__id",
+      "project_stack.title AS _stack__title"
+    )
+    .innerJoin("project_stack", "projects.id", "project_stack.projects_id");
+
   if (!filter) {
-    return db("projects").join(
-      "project_stack",
-      "project_stack.projects_id",
-      "=",
-      "projects.id"
-    );
-    // .select("project_stack.title");
+    return knexnest(sql);
   } else {
-    return db("projects").where(filter);
+    return knexnest(
+      db("projects")
+        .select(
+          "projects.id AS _id",
+          "projects.title AS _title",
+          "projects.description AS _description",
+          "projects.github AS _github",
+          "projects.url AS _url",
+          "projects.image AS _image",
+          "project_stack.id AS _stack__id",
+          "project_stack.title AS _stack__title"
+        )
+        .innerJoin("project_stack", "projects.id", "project_stack.projects_id")
+        .where(filter)
+    );
   }
 };
 
