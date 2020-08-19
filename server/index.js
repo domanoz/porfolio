@@ -9,6 +9,8 @@ const homeRouter = require("../routes/homeRouter");
 const aboutRouter = require("../routes/aboutRouter");
 const projectsRouter = require("../routes/projectsRouter");
 const contactRouter = require("../routes/contactRouter");
+const servicesRouter = require("../routes/servicesRouter");
+const jobsRouter = require("../routes/jobsRouter");
 
 const server = express();
 
@@ -21,6 +23,8 @@ if (config.env === "development") {
 server.use(express.json());
 
 server.use("/api/v1/", homeRouter);
+server.use("/api/v1/services", servicesRouter);
+server.use("/api/v1/jobs", jobsRouter);
 server.use("/api/v1/about", aboutRouter);
 server.use("/api/v1/projects", projectsRouter);
 server.use("/api/v1/contact", contactRouter);

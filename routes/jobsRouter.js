@@ -1,16 +1,14 @@
 const router = require("express").Router();
-const Projects = require("../models/projectsModel");
+
 const Jobs = require("../models/jobsModel");
-const Services = require("../models/servicesModel");
 
 router.get("/", async (req, res, next) => {
   try {
-    const projects = await Projects.getAllProjects();
     const jobs = await Jobs.getAllJobs();
-    const services = await Services.getAllServices();
-    if (projects.length) {
+
+    if (jobs.length) {
       // res.status(200).json({ message: "Working" });
-      res.status(200).json({ projects, jobs, services });
+      res.status(200).json(jobs);
     } else {
       next({ message: "No data.", status: 404 });
     }

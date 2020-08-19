@@ -8,7 +8,7 @@ import * as actionCreators from "../actions";
 import "../css/Projects.css";
 
 const Projects = (props) => {
-  const { projects, getProjects, title, showLink } = props;
+  const { projects, title, showLink } = props;
 
   useEffect(() => {
     // getProjects();

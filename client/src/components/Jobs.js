@@ -8,13 +8,18 @@ import "../css/Jobs.css";
 
 const Jobs = (props) => {
   const { jobs, getJobs } = props;
+  const [value, setValue] = React.useState(0);
 
   useEffect(() => {
-    // getJobs();
+    getJobs();
   }, []);
 
-  const [value, setValue] = React.useState(0);
+  if (!jobs.length) {
+    return <div>Loading...</div>;
+  }
+
   const { company, position, date, description } = jobs[value];
+
   return (
     <section className="section jobs">
       <Title title="expierence" />
@@ -37,7 +42,7 @@ const Jobs = (props) => {
         <article className="job-info">
           <h3>{position}</h3>
           <h4>{company}</h4>
-          <p className="job-date">{date}</p>
+          {/* <p className="job-date">{date}</p> */}
           {description.map((item) => {
             return (
               <div key={item.id} className="job-desc">
@@ -55,4 +60,4 @@ const Jobs = (props) => {
   );
 };
 
-export default connect((state) => state, actionCreators)(Jobs);
+export default connect((jobs) => jobs, actionCreators)(Jobs);

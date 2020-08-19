@@ -9,7 +9,7 @@ import aboutimg from "../img/about-img-main.png";
 import "../css/About.css";
 
 function About(props) {
-  const { about, getAbout, title } = props;
+  const { about, title } = props;
 
   useEffect(() => {
     // getAbout();

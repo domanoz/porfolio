@@ -1,19 +1,18 @@
 import React from "react";
-
-import Jobs from "../components/Jobs";
 import Projects from "../components/Projects";
+import Jobs from "../components/Jobs";
 import Hero from "../components/Hero";
 import Services from "../components/Services";
 
-function Home() {
+const Home = (props) => {
   return (
     <>
       <Hero />
-      <Jobs />
       <Services />
+      <Jobs />
       <Projects title="Projects" />
     </>
   );
-}
+};
 
 export default Home;
