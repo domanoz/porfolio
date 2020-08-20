@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
+import Loader from "react-loader-spinner";
 import Title from "../components/Title";
 
 import * as actionCreators from "../actions";
@@ -16,7 +17,15 @@ function About(props) {
   }, [getAbout]);
 
   if (!about.length) {
-    return <div> Loading ... </div>;
+    return (
+      <Loader
+        type="Puff"
+        color="hsl(185, 57%, 50%)"
+        height={100}
+        width={100}
+        timeout={3000}
+      />
+    );
   }
 
   return (

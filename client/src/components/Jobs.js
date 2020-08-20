@@ -1,5 +1,7 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
+import Loader from "react-loader-spinner";
 import Title from "./Title";
 import { FaAngleDoubleRight } from "react-icons/fa";
 import { connect } from "react-redux";
@@ -15,7 +17,15 @@ const Jobs = (props) => {
   }, [getJobs]);
 
   if (!jobs.length) {
-    return <div>Loading...</div>;
+    return (
+      <Loader
+        type="Puff"
+        color="hsl(185, 57%, 50%)"
+        height={100}
+        width={100}
+        timeout={3000}
+      />
+    );
   }
 
   const { company, position, description } = jobs[value];
