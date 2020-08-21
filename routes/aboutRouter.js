@@ -1,5 +1,8 @@
 const router = require("express").Router();
 const About = require("../models/aboutModel");
+const config = require("../config");
+
+const { handleErrors, validateId } = require("../utils/utils");
 
 router.get("/", async (req, res, next) => {
   try {
@@ -7,19 +10,29 @@ router.get("/", async (req, res, next) => {
     if (about.length) {
       res.status(200).json(about);
     } else {
-      next({ message: "No about information.", status: 404 });
+      next(config.errors.aboutNotFound);
     }
   } catch (error) {
     next(error);
   }
 });
 
-router.use((err, res, req, next) => {
-  res.status(err.status || 500).json({
-    message: err.message || err,
-    method: req.method,
-    url: req.url,
-  });
+router.put("/:id", validateId, async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const data = req.body;
+    console.log(id);
+    const updatedAbout = await About.updateAbout(id, data);
+    if (updatedAbout) {
+      res.status(200).json(updatedAbout);
+    } else {
+      next(config.errors.aboutNotFound);
+    }
+  } catch (error) {
+    next(error);
+  }
 });
+
+handleErrors("aboutRouter", router);
 
 module.exports = router;

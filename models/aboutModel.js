@@ -30,6 +30,24 @@ const getAbout = (filter) => {
   }
 };
 
+const updateAbout = (id, data) => {
+  for (let i = 0; i < data.stack.length; i++) {
+    db("about_stack")
+      .where({ about_id: 1, id: data.stack[i].id })
+      .update({ title: data.stack[i].title })
+      .then(() => {
+        console.log("Inserted");
+      });
+  }
+  const updated = db("about")
+    .where({ id })
+    .update({ info: data.info, description: data.description })
+    .then(() => getAbout());
+
+  return updated;
+};
+
 module.exports = {
   getAbout,
+  updateAbout,
 };
