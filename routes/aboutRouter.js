@@ -21,7 +21,7 @@ router.put("/:id", validateId, async (req, res, next) => {
   try {
     const { id } = req.params;
     const data = req.body;
-    console.log(id);
+    // console.log(id);
     const updatedAbout = await About.updateAbout(id, data);
     if (updatedAbout) {
       res.status(200).json(updatedAbout);

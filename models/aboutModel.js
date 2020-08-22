@@ -36,7 +36,7 @@ const updateAbout = (id, data) => {
       .where({ about_id: 1, id: data.stack[i].id })
       .update({ title: data.stack[i].title })
       .then(() => {
-        console.log("Inserted");
+        console.log("Updated");
       });
   }
   const updated = db("about")

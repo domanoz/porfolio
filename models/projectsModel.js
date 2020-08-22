@@ -36,8 +36,22 @@ const getAllProjects = (filter) => {
   }
 };
 
-const getProject = (filter) => {
-  return db("projects").where(filter).first();
+const getProject = (id) => {
+  return knexnest(
+    db("projects")
+      .select(
+        "projects.id AS _id",
+        "projects.title AS _title",
+        "projects.description AS _description",
+        "projects.github AS _github",
+        "projects.url AS _url",
+        "projects.image AS _image",
+        "project_stack.id AS _stack__id",
+        "project_stack.title AS _stack__title"
+      )
+      .innerJoin("project_stack", "projects.id", "project_stack.projects_id")
+      .where("projects.id", id)
+  );
 };
 
 const addProject = (project) => {
@@ -47,10 +61,27 @@ const addProject = (project) => {
 };
 
 const updateProject = (id, project) => {
-  return db("projects")
+  console.log(id);
+  for (let i = 0; i < project.stack.length; i++) {
+    db("project_stack")
+      .where({ projects_id: id, id: project.stack[i].id })
+      .update({ title: project.stack[i].title })
+      .then(() => {
+        console.log("Updated");
+      });
+  }
+  const updated = db("projects")
     .where({ id })
-    .update(project)
-    .then((ids) => getProject({ id: ids[0] }));
+    .update({
+      title: project.title,
+      description: project.description,
+      github: project.github,
+      url: project.url,
+      image: project.image,
+    })
+    .then(() => getProject(id));
+
+  return updated;
 };
 
 const deleteProject = (id) => {
