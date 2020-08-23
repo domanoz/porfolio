@@ -2,7 +2,7 @@ exports.up = async (knex) => {
   await Promise.all([
     knex.schema.createTable("projects", (projects) => {
       projects.increments().notNullable();
-      projects.string("title").notNullable().unique();
+      projects.string("title").notNullable();
       projects.text("description").notNullable();
       projects.string("github").notNullable();
       projects.string("url").notNullable();
@@ -14,6 +14,7 @@ exports.up = async (knex) => {
       project_stack
         .integer("projects_id")
         .unsigned()
+        .notNullable()
         .references("id")
         .inTable("projects")
         .onDelete("cascade");

@@ -54,14 +54,40 @@ const getProject = (id) => {
   );
 };
 
-const addProject = (project) => {
-  return db("projects")
-    .insert(project, "id")
-    .then((ids) => getProject({ id: ids[0] }));
+const addProject = async (project) => {
+  return await db
+    .transaction(function (t) {
+      return db("projects")
+        .transacting(t)
+        .insert({
+          title: project.title,
+          description: project.description,
+          github: project.github,
+          url: project.url,
+          image: project.image,
+        })
+        .then(function (response) {
+          const projectsStackToInsert = project.stack.map((stck) => ({
+            title: stck.title,
+            projects_id: response[0],
+          }));
+          console.log(projectsStackToInsert);
+          return db("project_stack")
+            .transacting(t)
+            .insert(projectsStackToInsert);
+        })
+        .then(t.commit)
+        .catch(t.rollback);
+    })
+    .then(function () {
+      console.log("Created new project");
+    })
+    .catch(function () {
+      console.log("Creating new project failed");
+    });
 };
 
 const updateProject = (id, project) => {
-  console.log(id);
   for (let i = 0; i < project.stack.length; i++) {
     db("project_stack")
       .where({ projects_id: id, id: project.stack[i].id })
@@ -85,7 +111,21 @@ const updateProject = (id, project) => {
 };
 
 const deleteProject = (id) => {
-  return db("projects").where({ id }).del();
+  db("project_stack")
+    .where({ projects_id: id })
+    .del()
+    .then(() => {
+      console.log("Deleted stack");
+    });
+
+  return db("projects")
+    .where({ id })
+    .del()
+    .then(() => {
+      return {
+        message: "Project deleted",
+      };
+    });
 };
 
 module.exports = {

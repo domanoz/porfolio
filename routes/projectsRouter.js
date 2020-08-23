@@ -40,7 +40,36 @@ router.put("/:id", validateId, async (req, res, next) => {
     if (updatedProject) {
       res.status(200).json(updatedProject);
     } else {
-      next(config.errors.aboutNotFound);
+      next(config.errors.projectNotFound);
+    }
+  } catch (error) {
+    next(error);
+  }
+});
+
+router.post("/", async (req, res, next) => {
+  try {
+    const project = req.body;
+    const addedProject = await Projects.addProject(project);
+    if (addedProject) {
+      res.status(200).json(addedProject);
+    } else {
+      next(config.errors.projectNotFound);
+    }
+  } catch (error) {
+    next(error);
+  }
+});
+
+router.delete("/:id", validateId, async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    console.log(id);
+    const message = await Projects.deleteProject(id);
+    if (message) {
+      res.status(200).json(message);
+    } else {
+      next(config.errors.projectNotFound);
     }
   } catch (error) {
     next(error);
