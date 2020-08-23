@@ -1,6 +1,9 @@
 const router = require("express").Router();
 
 const Services = require("../models/servicesModel");
+const config = require("../config");
+
+const { handleErrors, validateId } = require("../utils/utils");
 
 router.get("/", async (req, res, next) => {
   try {
@@ -14,5 +17,23 @@ router.get("/", async (req, res, next) => {
     next(error);
   }
 });
+
+router.put("/:id", validateId, async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const service = req.body;
+    // console.log(id);
+    const updatedService = await Services.updateService(id, service);
+    if (updatedService) {
+      res.status(200).json(updatedService);
+    } else {
+      next(config.errors.serviceNotFound);
+    }
+  } catch (error) {
+    next(error);
+  }
+});
+
+handleErrors("serviceRouter", router);
 
 module.exports = router;

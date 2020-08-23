@@ -12,6 +12,7 @@ module.exports = {
       status: 401,
     },
     aboutNotFound: { message: "About not found!", status: 404 },
+    serviceNotFound: { message: "Service not found!", status: 404 },
     couldntGetAllSlides: { message: "Couldn't get about slides" },
     couldntAddAboutLine: { message: "Couldn't add about line to database!" },
     couldntUpdateAboutLine: { message: "Couldn't update about line info!" },
