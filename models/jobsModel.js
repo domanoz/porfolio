@@ -75,13 +75,35 @@ const updateJob = (id, job) => {
       company: job.company,
       position: job.position,
     })
-    .then(() => console.log("Added new job"));
+    .then(() => console.log("Updated job"));
 
   return updated;
+};
+
+const deleteJob = (id) => {
+  db("jobs_description")
+    .where({ jobs_id: id })
+    .del()
+    .then(() => {
+      console.log("Deleted job descripction");
+    });
+
+  return db("jobs")
+    .where({ id })
+    .del()
+    .then(() => {
+      return {
+        message: "Job deleted",
+      };
+    })
+    .catch(() => {
+      console.log("Job wasnt deleted");
+    });
 };
 
 module.exports = {
   getAllJobs,
   addJob,
+  deleteJob,
   updateJob,
 };

@@ -22,8 +22,38 @@ router.post("/", async (req, res, next) => {
   try {
     const job = req.body;
     const addedJob = await Jobs.addJob(job);
-    if (addedJob) {
+    if (addedJob.length) {
       res.status(200).json(addedJob);
+    } else {
+      next(config.errors.jobNotFound);
+    }
+  } catch (error) {
+    next(error);
+  }
+});
+
+router.put("/:id", validateId, async (req, res, next) => {
+  try {
+    const job = req.body;
+    const { id } = req.params;
+    const updatedJob = await Jobs.updateJob(id, job);
+    if (updatedJob) {
+      res.status(200).json(updatedJob);
+    } else {
+      next(config.errors.jobNotFound);
+    }
+  } catch (error) {
+    next(error);
+  }
+});
+
+router.delete("/:id", validateId, async (req, res, next) => {
+  try {
+    const { id } = req.params;
+
+    const message = await Jobs.deleteJob(id);
+    if (message) {
+      res.status(200).json(message);
     } else {
       next(config.errors.jobNotFound);
     }
