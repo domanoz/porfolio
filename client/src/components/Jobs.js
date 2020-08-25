@@ -14,7 +14,7 @@ const Jobs = (props) => {
 
   useEffect(() => {
     getJobs();
-  }, [getJobs]);
+  }, [jobs, getJobs]);
 
   if (!jobs.length) {
     return (

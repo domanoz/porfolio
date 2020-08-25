@@ -12,7 +12,7 @@ const Projects = (props) => {
 
   useEffect(() => {
     getProjects();
-  }, [getProjects]);
+  }, [projects, getProjects]);
 
   return (
     <section className="section projects">

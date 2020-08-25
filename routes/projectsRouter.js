@@ -51,7 +51,7 @@ router.post("/", async (req, res, next) => {
   try {
     const project = req.body;
     const addedProject = await Projects.addProject(project);
-    if (addedProject) {
+    if (addedProject.length) {
       res.status(200).json(addedProject);
     } else {
       next(config.errors.projectNotFound);
