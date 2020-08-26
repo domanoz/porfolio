@@ -11,6 +11,7 @@ import Sidebar from "./components/Sidebar";
 import Home from "./pages/Home";
 import Contact from "./pages/Contact";
 import About from "./pages/About";
+import Login from "./pages/Login";
 
 function App() {
   const [isOpen, setIsOpen] = React.useState(false);
@@ -26,6 +27,9 @@ function App() {
         <Switch>
           <Route path="/" exact>
             <Home />
+          </Route>
+          <Route path="/admin">
+            <Login />
           </Route>
           <Route path="/projects">
             <Projects title="Projects" />
