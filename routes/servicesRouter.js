@@ -3,7 +3,7 @@ const router = require("express").Router();
 const Services = require("../models/servicesModel");
 const config = require("../config");
 
-const { handleErrors, validateId } = require("../utils/utils");
+const { requireLogin, handleErrors, validateId } = require("../utils/utils");
 
 router.get("/", async (req, res, next) => {
   try {
@@ -18,7 +18,7 @@ router.get("/", async (req, res, next) => {
   }
 });
 
-router.put("/:id", validateId, async (req, res, next) => {
+router.put("/:id", requireLogin, validateId, async (req, res, next) => {
   try {
     const { id } = req.params;
     const service = req.body;

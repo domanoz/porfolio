@@ -11,6 +11,7 @@ const projectsRouter = require("../routes/projectsRouter");
 const contactRouter = require("../routes/contactRouter");
 const servicesRouter = require("../routes/servicesRouter");
 const jobsRouter = require("../routes/jobsRouter");
+const loginRouter = require("../routes/loginRouter");
 
 const server = express();
 
@@ -28,5 +29,6 @@ server.use("/api/v1/jobs", jobsRouter);
 server.use("/api/v1/about", aboutRouter);
 server.use("/api/v1/projects", projectsRouter);
 server.use("/api/v1/contact", contactRouter);
+server.use("/api/v1/login", loginRouter);
 
 module.exports = server;

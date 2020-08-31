@@ -1,4 +1,7 @@
-exports.seed = function(knex) {
+const bcrypt = require("bcrypt");
+require("dotenv").config();
+
+exports.seed = async function (knex) {
   // Deletes ALL existing entries
   await Promise.all([knex("users").truncate()]);
 
@@ -7,8 +10,8 @@ exports.seed = function(knex) {
   const testUser = [
     {
       username: "doman",
-      password: "web development",
-      }
+      password: bcrypt.hashSync(process.env.ADMINPW, 11),
+    },
   ];
 
   await knex("users").insert(testUser);

@@ -2,7 +2,7 @@ const router = require("express").Router();
 const Projects = require("../models/projectsModel");
 const config = require("../config");
 
-const { handleErrors, validateId } = require("../utils/utils");
+const { requireLogin, handleErrors, validateId } = require("../utils/utils");
 
 router.get("/", async (req, res, next) => {
   try {
@@ -17,7 +17,7 @@ router.get("/", async (req, res, next) => {
   }
 });
 
-router.get("/:id", async (req, res, next) => {
+router.get("/:id", validateId, async (req, res, next) => {
   try {
     const { id } = req.params;
     const project = await Projects.getProject(id);
@@ -31,7 +31,7 @@ router.get("/:id", async (req, res, next) => {
   }
 });
 
-router.put("/:id", validateId, async (req, res, next) => {
+router.put("/:id", requireLogin, validateId, async (req, res, next) => {
   try {
     const { id } = req.params;
     const project = req.body;
@@ -47,7 +47,7 @@ router.put("/:id", validateId, async (req, res, next) => {
   }
 });
 
-router.post("/", async (req, res, next) => {
+router.post("/", requireLogin, async (req, res, next) => {
   try {
     const project = req.body;
     const addedProject = await Projects.addProject(project);
@@ -61,7 +61,7 @@ router.post("/", async (req, res, next) => {
   }
 });
 
-router.delete("/:id", validateId, async (req, res, next) => {
+router.delete("/:id", requireLogin, validateId, async (req, res, next) => {
   try {
     const { id } = req.params;
     console.log(id);

@@ -2,7 +2,7 @@ const router = require("express").Router();
 const config = require("../config");
 const Jobs = require("../models/jobsModel");
 
-const { handleErrors, validateId } = require("../utils/utils");
+const { requireLogin, handleErrors, validateId } = require("../utils/utils");
 
 router.get("/", async (req, res, next) => {
   try {
@@ -18,7 +18,7 @@ router.get("/", async (req, res, next) => {
   }
 });
 
-router.post("/", async (req, res, next) => {
+router.post("/", requireLogin, async (req, res, next) => {
   try {
     const job = req.body;
     const addedJob = await Jobs.addJob(job);
@@ -32,7 +32,7 @@ router.post("/", async (req, res, next) => {
   }
 });
 
-router.put("/:id", validateId, async (req, res, next) => {
+router.put("/:id", requireLogin, validateId, async (req, res, next) => {
   try {
     const job = req.body;
     const { id } = req.params;
@@ -47,7 +47,7 @@ router.put("/:id", validateId, async (req, res, next) => {
   }
 });
 
-router.delete("/:id", validateId, async (req, res, next) => {
+router.delete("/:id", requireLogin, validateId, async (req, res, next) => {
   try {
     const { id } = req.params;
 

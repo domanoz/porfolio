@@ -16,7 +16,7 @@ const Login = (props) => (
     <div className="inner">
       <p>Sign In</p>
       <form noValidate>
-        {/* onSubmit={onLogin} */}
+        {/* {(onSubmit = { onLogin })} */}
         <Grid container spacing={2}>
           <Grid item xs={12}>
             <TextField

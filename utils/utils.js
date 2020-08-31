@@ -1,4 +1,5 @@
 const config = require("../config");
+const { jwtExpiresIn } = require("../config");
 
 function handleErrors(name, router) {
   // eslint-disable-next-line no-unused-vars
@@ -21,7 +22,25 @@ function validateId(req, res, next) {
   }
 }
 
+function requireLogin(req, res, next) {
+  const token = req.headers.authorization;
+
+  if (token) {
+    jwtExpiresIn.verify(token, config.jwtSecret, (err, decodeUser) => {
+      if (err) {
+        next(err);
+      } else {
+        req.loggedInUser = decodedUser;
+        next();
+      }
+    });
+  } else {
+    next(config.errors.noTokenProvided);
+  }
+}
+
 module.exports = {
   handleErrors,
+  requireLogin,
   validateId,
 };
