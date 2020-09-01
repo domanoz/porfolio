@@ -28,16 +28,16 @@ function App() {
           <Route path="/" exact>
             <Home />
           </Route>
-          <Route path="/admin">
+          <Route path="/admin" exact>
             <Login />
           </Route>
-          <Route path="/projects">
+          <Route path="/projects" exact>
             <Projects title="Projects" />
           </Route>
-          <Route path="/about">
+          <Route path="/about" exact>
             <About title="About" />
           </Route>
-          <Route path="/contact">
+          <Route path="/contact" exact>
             <Contact />
           </Route>
         </Switch>

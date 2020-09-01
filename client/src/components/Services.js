@@ -10,7 +10,7 @@ const Services = (props) => {
 
   useEffect(() => {
     getServices();
-  }, [services, getServices]);
+  }, [getServices]);
 
   return (
     <section className="section bg-grey">

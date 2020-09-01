@@ -14,7 +14,7 @@ function About(props) {
 
   useEffect(() => {
     getAbout();
-  }, [about, getAbout]);
+  }, [getAbout]);
 
   if (!about.length) {
     return (

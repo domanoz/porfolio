@@ -1,34 +1,46 @@
-const router = require("express").Router();
-const config = require("../config");
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const router = require("express").Router();
+const db = require("../database/dbConfig");
+const config = require("../config");
 
-const { requireLogin, handleErrors, validateId } = require("../utils/utils");
+const { handleErrors } = require("../utils/utils");
 
 router.post("/", async (req, res, next) => {
   try {
     const { username, password } = req.body;
+    // console.log(username);
     if (!username || !password) {
       next(config.errors.missingFields);
       return;
     }
-    const user = await db("users").first();
-    const isValidPassword = bcrypt.compareSync(password, user.password);
-    if (isValidPassword) {
-      const token = jwt.sign(
-        {
-          subject: user.id,
-          username: user.username,
-        },
-        config.jwtSecret,
-        config.jwtExpiresIn
-      );
 
-      res.status(200).json({
+    const user = await db("users").where({ username }).first();
+    if (!user) {
+      next(config.errors.invalidLogin);
+      return;
+    }
+
+    const isValidPassword = bcrypt.compareSync(password, user.password);
+    if (!isValidPassword) {
+      next(config.errors.invalidLogin);
+      return;
+    }
+
+    const token = jwt.sign(
+      {
         id: user.id,
         username: user.username,
-      });
-    }
+      },
+      config.jwtSecret,
+      { expiresIn: "1h" }
+    );
+
+    res.status(200).json({
+      id: user.id,
+      username: user.username,
+      token,
+    });
   } catch (error) {
     next(error);
   }

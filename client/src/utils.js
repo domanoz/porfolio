@@ -3,7 +3,7 @@ export const loadState = (keys) => {
     let serializedState = null;
     let err = false;
     serializedState = keys.reduce((serialSt, key) => {
-      serialSt[key] = localStorage.getItem("melquip_" + key);
+      serialSt[key] = localStorage.getItem("doman_" + key);
       if (serialSt[key] !== null) {
         serialSt[key] = JSON.parse(serialSt[key]);
       } else {
@@ -25,11 +25,11 @@ export const saveState = (state, keys) => {
       keys.forEach((key) => {
         if (key === "user") state[key]["updatedAt"] = Date.now();
         serializedState = JSON.stringify(state[key]);
-        localStorage.setItem("melquip_" + key, serializedState);
+        localStorage.setItem("doman_" + key, serializedState);
       });
     } else {
       serializedState = JSON.stringify(state);
-      localStorage.setItem("melquip_state", serializedState);
+      localStorage.setItem("doman_state", serializedState);
     }
   } catch (err) {
     throw new Error("Not able to set local storage: ", err);

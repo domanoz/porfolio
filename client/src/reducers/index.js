@@ -50,3 +50,16 @@ export function aboutReducer(state = initialAboutState, action) {
       return state;
   }
 }
+
+const initialUserState = {};
+
+export function userReducer(state = initialUserState, action) {
+  switch (action.type) {
+    case types.LOGOUT:
+      return initialUserState;
+    case types.SET_USER:
+      return action.payload;
+    default:
+      return state;
+  }
+}

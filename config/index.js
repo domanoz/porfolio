@@ -1,7 +1,7 @@
 module.exports = {
   port: process.env.PORT,
   env: process.env.NODE_ENV || "development",
-  jwtSecret: process.env.JWTSECRET,
+  jwtSecret: process.env.JWT_SECRET,
   jwtExpiresIn: process.env.JWT_EXPIRES_IN,
   errors: {
     invalidId: { message: "Invalid asset id!", status: 401 },

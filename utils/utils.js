@@ -26,7 +26,7 @@ function requireLogin(req, res, next) {
   const token = req.headers.authorization;
 
   if (token) {
-    jwtExpiresIn.verify(token, config.jwtSecret, (err, decodeUser) => {
+    jwt.verify(token, config.jwtSecret, (err, decodedUser) => {
       if (err) {
         next(err);
       } else {

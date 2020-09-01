@@ -38,3 +38,26 @@ export const getAbout = () => (dispatch) => {
     });
   });
 };
+
+export const login = (form) => (dispatch) => {
+  axios
+    .post(`${server}/api/v1/login`, form)
+    .then((response) => {
+      dispatch({
+        type: types.SET_USER,
+        payload: response.data,
+      });
+    })
+    .catch((err) => {
+      dispatch({
+        type: types.SET_USER,
+        payload: err.response.data,
+      });
+    });
+};
+
+export const logout = () => {
+  return {
+    type: types.LOGOUT,
+  };
+};
