@@ -28,7 +28,8 @@
     "seedDB": "npx knex seed:run",
     "updateDB": "npm run resetDB && npx knex migrate:latest && npm run seedDB",
     "updateDBDev": "npm run resetDB --env development && npx knex migrate:latest --env development && npm run seedDB --env development",
-    "updateDBTest": "npm run resetDB --env testing && npx knex migrate:latest --env testing"
+    "updateDBTest": "npm run resetDB --env testing && npx knex migrate:latest --env testing",
+    "heroku-postbuild": "npm install --prefix client --only=dev && npm install --prefix client && npm run build --prefix client"
   },
   "repository": {
     "type": "git",
