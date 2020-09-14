@@ -7,6 +7,7 @@ module.exports = {
   jwtExpiresIn: process.env.JWT_EXPIRES_IN,
   origin: [
     "[domansky.netlify.com]",
+    "https://domansky.netlify.app",
     "http://localhost",
     "http://localhost:3000",
     "http://www.domansky.pl",
