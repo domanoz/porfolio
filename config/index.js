@@ -6,6 +6,7 @@ module.exports = {
   jwtSecret: process.env.JWT_SECRET,
   jwtExpiresIn: process.env.JWT_EXPIRES_IN,
   origin: [
+    "[domansky.netlify.com]",
     "http://localhost",
     "http://localhost:3000",
     "http://www.domansky.pl",
