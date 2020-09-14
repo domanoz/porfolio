@@ -1,8 +1,16 @@
+require("dotenv").config();
+
 module.exports = {
   port: process.env.PORT,
-  env: process.env.NODE_ENV || "development",
+  env: process.env.NODE_ENV || "DEVELOPMENT",
   jwtSecret: process.env.JWT_SECRET,
   jwtExpiresIn: process.env.JWT_EXPIRES_IN,
+  origin: [
+    "http://localhost",
+    "http://localhost:3000",
+    "http://www.domansky.pl",
+    "https://www.domansky.pl",
+  ],
   errors: {
     invalidId: { message: "Invalid asset id!", status: 401 },
     missingFields: {

@@ -2,4 +2,4 @@ const knex = require("knex");
 const { env } = require("../config");
 const config = require("../knexfile");
 
-module.exports = knex(config["development"]);
+module.exports = knex(config[String(env).toLowerCase()]);

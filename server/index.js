@@ -15,10 +15,10 @@ const loginRouter = require("../routes/loginRouter");
 
 const server = express();
 
-server.use(cors());
 server.use(helmet());
+server.use(cors({ origin: config.origin }));
 
-if (config.env === "development") {
+if (config.env === "DEVELOPMENT") {
   server.use(morgan("dev"));
 }
 server.use(express.json());
