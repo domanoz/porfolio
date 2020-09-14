@@ -22,7 +22,9 @@ if (config.env === "DEVELOPMENT") {
   server.use(morgan("dev"));
 }
 server.use(express.json());
-
+server.get("/", (req, res) => {
+  res.status(200).json({ message: "Server is running" });
+});
 server.use("/api/v1/", homeRouter);
 server.use("/api/v1/services", servicesRouter);
 server.use("/api/v1/jobs", jobsRouter);
