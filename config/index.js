@@ -13,7 +13,7 @@ module.exports = {
     "http://www.domansky.pl",
     "https://www.domansky.pl",
   ],
-  productionDB: process.env.PRODUCTION_DB,
+  productionDB: process.env.DATABASE_URL,
   errors: {
     invalidId: { message: "Invalid asset id!", status: 401 },
     missingFields: {
