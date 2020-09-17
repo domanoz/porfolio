@@ -23,12 +23,12 @@ if (config.env === "DEVELOPMENT") {
 }
 server.use(express.json());
 
-server.use("/", homeRouter);
-server.use("/services", servicesRouter);
-server.use("/jobs", jobsRouter);
-server.use("/about", aboutRouter);
-server.use("/projects", projectsRouter);
-server.use("/contact", contactRouter);
-server.use("/login", loginRouter);
+server.use("/api/v1/", homeRouter);
+server.use("/api/v1/services", servicesRouter);
+server.use("/api/v1/jobs", jobsRouter);
+server.use("/api/v1/about", aboutRouter);
+server.use("/api/v1/projects", projectsRouter);
+server.use("/api/v1/contact", contactRouter);
+server.use("/api/v1/login", loginRouter);
 
 module.exports = server;
