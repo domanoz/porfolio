@@ -1,6 +1,6 @@
 exports.seed = async (knex) => {
   // Deletes ALL existing entries
-  await Promise.all([knex("about_stack").truncate(), knex("about").truncate()]);
+  await Promise.all([knex("about_stack").delete(), knex("about").delete()]);
 
   // Inserts seed entries
 
