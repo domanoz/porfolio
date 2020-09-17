@@ -17,20 +17,35 @@ const persistedStateKeysInLocalStorage = [
   "jobs",
   "projects",
 ];
-const store = createStore(
-  combineReducers({
-    user: userReducer,
-    about: aboutReducer,
-    services: servicesReducer,
-    jobs: jobsReducer,
-    projects: projectsReducer,
-  }),
-  loadState(persistedStateKeysInLocalStorage),
-  compose(
-    applyMiddleware(thunk),
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-  )
-);
+if (process.env.REACT_ENV === "development") {
+  const store = createStore(
+    combineReducers({
+      user: userReducer,
+      about: aboutReducer,
+      services: servicesReducer,
+      jobs: jobsReducer,
+      projects: projectsReducer,
+    }),
+    loadState(persistedStateKeysInLocalStorage),
+    compose(
+      applyMiddleware(thunk),
+      window.__REDUX_DEVTOOLS_EXTENSION__ &&
+        window.__REDUX_DEVTOOLS_EXTENSION__()
+    )
+  );
+} else {
+  const store = createStore(
+    combineReducers({
+      user: userReducer,
+      about: aboutReducer,
+      services: servicesReducer,
+      jobs: jobsReducer,
+      projects: projectsReducer,
+    }),
+    loadState(persistedStateKeysInLocalStorage),
+    compose(applyMiddleware(thunk))
+  );
+}
 
 store.subscribe(
   throttle(() => {
