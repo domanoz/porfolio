@@ -3,7 +3,7 @@ require("dotenv").config();
 
 exports.seed = async function (knex) {
   // Deletes ALL existing entries
-  await Promise.all([knex("users").truncate()]);
+  await Promise.all([knex("users").delete()]);
 
   // Inserts seed entries
 
