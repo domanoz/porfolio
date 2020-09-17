@@ -10,8 +10,8 @@ module.exports = {
     "https://domansky.netlify.app",
     "http://localhost",
     "http://localhost:3000",
-    "http://www.domansky.pl",
-    "https://www.domansky.pl",
+    "http://www.domansky.tech",
+    "https://www.domansky.tech",
   ],
   productionDB: process.env.DATABASE_URL,
   errors: {
