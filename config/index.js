@@ -11,6 +11,8 @@ module.exports = {
     "http://localhost",
     "http://localhost:3000",
     "http://www.domansky.tech",
+    "https://domansky.tech",
+    "http://domansky.tech/",
     "https://www.domansky.tech",
   ],
   productionDB: process.env.DATABASE_URL,
