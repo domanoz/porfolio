@@ -14,8 +14,7 @@ exports.seed = async (knex) => {
         "Simple forum built from scratch, implementing basin funcionality without using third party libraries. Because of free hosting it loads slowly and images are deleted after 30 minutes",
       github: "https://github.com/domanoz/dogLovers-forum",
       url: "https://doglovers-dd3c5.web.app/",
-      image:
-        "https://image.shutterstock.com/z/stock-photo-project-management-scheduling-concept-with-gantt-chart-planning-with-tasks-and-milestones-to-1148670914.jpg",
+      image: "https://i.ibb.co/r2dxKyB/forum-doglovers.jpg",
     },
     {
       title: "Portfolio",
