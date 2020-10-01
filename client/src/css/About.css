@@ -3,12 +3,14 @@
   background: var(--clr-grey-10);
   min-height: calc(100vh - 5rem - 9rem);
   place-items: center;
-  padding: 7rem 0;
+  padding: 1rem 0;
 }
 
 .about-img {
-  margin-bottom: 2rem;
+  display: block;
+  /* margin-bottom: auto; */
   height: 25rem;
+  margin: auto;
 }
 
 .about-text .section-title {
@@ -47,6 +49,10 @@
 }
 
 @media screen and (min-width: 992px) {
+  .about-page {
+    padding: 7rem 0;
+  }
+
   .about-center {
 
     display: grid;
