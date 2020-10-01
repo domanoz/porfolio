@@ -2,7 +2,7 @@ import * as types from "./types";
 import axios from "axios";
 
 const server = process.env.REACT_APP_API;
-console.log(server);
+
 export const getServices = () => (dispatch) => {
   axios.get(`${server}/api/v1/services`).then(({ data: services }) => {
     dispatch({
