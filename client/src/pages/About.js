@@ -34,7 +34,7 @@ function About(props) {
         <img className="about-img" src={aboutimg} alt="" />
         <article className="about-text">
           <Title title={title} />
-          <p>{about[0].description}</p>
+          <p>{about[0].info}</p>
           <div className="about-stack">
             {about[0].stack.map((item) => {
               return <span key={item.id}>{item.title}</span>;
