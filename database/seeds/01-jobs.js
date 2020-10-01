@@ -10,7 +10,7 @@ exports.seed = async (knex) => {
       position: "Data Analyst",
     },
     {
-      company: "My own projects",
+      company: "Private projects",
       position: "Fullstack developer",
     },
   ];

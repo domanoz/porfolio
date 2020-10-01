@@ -209,6 +209,7 @@ p {
 }
 
 .social-link {
+  margin: 0.5rem;
   font-size: 1.75rem;
   color: var(--clr-grey-1);
   transition: var(--transition);

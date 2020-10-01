@@ -2,7 +2,7 @@ exports.up = async (knex) => {
   await Promise.all([
     knex.schema.createTable("about", (about) => {
       about.increments().notNullable();
-      about.text("description", 400).notNullable();
+      about.text("description", 700).notNullable();
     }),
     knex.schema.createTable("about_stack", (about_stack) => {
       about_stack.increments().notNullable();
