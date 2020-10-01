@@ -4,23 +4,23 @@ exports.seed = async (knex) => {
 
   // Inserts seed entries
 
-  const testServices = [
+  const services = [
     {
       icon: "FaCode",
-      title: "web development",
-      text: `I'm baby meditation tofu chillwave, distillery messenger bag thundercats chicharrones kale chips gochujang. Banh mi direct trade marfa salvia.`,
-    },
-    {
-      icon: "FaSketch",
-      title: "web design",
-      text: `I'm baby meditation tofu chillwave, distillery messenger bag thundercats chicharrones kale chips gochujang. Banh mi direct trade marfa salvia.`,
+      title: "Web Application Development",
+      text: `Fast, responsive and engaging apps that bring your ideas to life.`,
     },
     {
       icon: "FaAndroid",
-      title: "app design",
-      text: `I'm baby meditation tofu chillwave, distillery messenger bag thundercats chicharrones kale chips gochujang. Banh mi direct trade marfa salvia.`,
+      title: "API Development",
+      text: `REST APIs that are tailored to your needs and follow the best practices in performance and security.`,
+    },
+    {
+      icon: "FaSketch",
+      title: "Database Design",
+      text: `Proper Database design for effective Web & Mobile development, always aiming for performance, scale and stability.`,
     },
   ];
 
-  await knex("services").insert(testServices);
+  await knex("services").insert(services);
 };

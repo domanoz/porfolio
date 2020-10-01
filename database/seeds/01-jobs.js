@@ -4,39 +4,43 @@ exports.seed = async (knex) => {
 
   // Inserts seed entries
 
-  const testJobs = [
+  const jobs = [
     {
-      company: "Example company 1",
-      position: "Data analist 1",
+      company: "Sii Polska",
+      position: "Data Analyst",
     },
     {
-      company: "Example company 2",
-      position: "Data analist 2",
-    },
-  ];
-
-  const test_jobs_description = [
-    { jobs_id: 1, name: "Example desc  lorem ipsum bla 111" },
-    {
-      jobs_id: 2,
-      name: "Example desc  lorem ipsum bla 222",
-    },
-    {
-      jobs_id: 1,
-      name: "Example desc  lorem ipsum bla 333",
-    },
-    {
-      jobs_id: 1,
-      name: "Example desc  lorem ipsum bla 444",
-    },
-    {
-      jobs_id: 2,
-      name: "Example desc  lorem ipsum bla 555",
+      company: "My own projects",
+      position: "Fullstack developer",
     },
   ];
 
-  await knex("jobs").insert(testJobs);
+  const jobs_description = [
+    { jobs_id: 1, name: "Verification and updating of databases" },
+    {
+      jobs_id: 1,
+      name: "Data quality and consistency assurance",
+    },
+    {
+      jobs_id: 1,
+      name: "Communication with database administrators from other countries",
+    },
+    {
+      jobs_id: 2,
+      name: "Creating mockups for website",
+    },
+    {
+      jobs_id: 2,
+      name: "Prototyping databases",
+    },
+    {
+      jobs_id: 2,
+      name: "Building an application from scratch",
+    },
+  ];
 
-  await knex("jobs_description").insert(test_jobs_description);
+  await knex("jobs").insert(jobs);
+
+  await knex("jobs_description").insert(jobs_description);
   // console.log(`Created projects: ${createdProjects}`);
 };

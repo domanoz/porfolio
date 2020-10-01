@@ -4,26 +4,28 @@ exports.seed = async (knex) => {
 
   // Inserts seed entries
 
-  const testAbout = {
-    info:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sodales mauris a elit viverra, vel molestie sapien ornare. LAL AL AL ALL ALALAL LA LA LA LLA LA LA LA LLA LA L AL ALL ALA LA L",
-    description: "Example description of the project",
-    url: "https://doglovers-dd3c5.web.app/",
+  const about = {
+    description:
+      "My passion is making ideas come to life, be it working solo, as part of a team or leading a team of fellow developers. My go-to technologies are React and Node.js, and I have completed a wide range of projects using them. Those are not the only two libraries/frameworks I'm familiar with though, and I'm always happy to discuss my client's needs and find the best solutions for them. I consider myself creative and hardworking, as my stats show. If you liked my profile so far, drop me a message and we'll discuss how I can be useful to your project.",
   };
 
-  const test_about_stack = [
-    { about_id: 1, title: "example about 1" },
+  const about_stack = [
+    { about_id: 1, title: "React" },
     {
       about_id: 1,
-      title: "example about 2",
+      title: "Nodejs",
     },
     {
       about_id: 1,
-      title: "example about 3",
+      title: "mongoDB",
+    },
+    {
+      about_id: 1,
+      title: "postgreSQL",
     },
   ];
 
-  await knex("about").insert(testAbout);
+  await knex("about").insert(about);
 
-  await knex("about_stack").insert(test_about_stack);
+  await knex("about_stack").insert(about_stack);
 };

@@ -7,12 +7,12 @@ exports.seed = async function (knex) {
 
   // Inserts seed entries
 
-  const testUser = [
+  const user = [
     {
       username: "doman",
       password: bcrypt.hashSync(process.env.ADMINPW, 11),
     },
   ];
 
-  await knex("users").insert(testUser);
+  await knex("users").insert(user);
 };
