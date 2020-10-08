@@ -10,6 +10,8 @@ module.exports = {
     "https://domansky.netlify.app",
     "http://localhost",
     "http://localhost:3000",
+    "http://127.0.0.1:3000",
+    "http://127.0.0.1:3000/",
     "http://www.domansky.tech",
     "https://domansky.tech",
     "http://domansky.tech/",

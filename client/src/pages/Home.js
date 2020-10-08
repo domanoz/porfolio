@@ -8,8 +8,8 @@ const Home = (props) => {
   return (
     <>
       <Hero />
-      <Jobs />
       <Services />
+      <Jobs />
       <Projects title="Projects" />
     </>
   );

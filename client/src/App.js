@@ -1,11 +1,17 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Redirect,
+} from "react-router-dom";
 
 //COMPONENTS
 import Navbar from "./components/Navbar";
 import Projects from "./components/Projects";
 import Footer from "./components/Footer";
 import Sidebar from "./components/Sidebar";
+import Dashboard from "./pages/adminDashboard";
 
 //PAGES
 import Home from "./pages/Home";
@@ -31,6 +37,17 @@ function App() {
           <Route path="/admin" exact>
             <Login />
           </Route>
+          <Route
+            path="/admin/dashboard"
+            render={(props) => {
+              const user = JSON.parse(localStorage.getItem("doman_user"));
+              if (user && user.token) {
+                return <Dashboard {...props} />;
+              } else {
+                return <Redirect to="/admin" />;
+              }
+            }}
+          />
           <Route path="/projects" exact>
             <Projects title="Projects" />
           </Route>
