@@ -100,7 +100,7 @@ const TableDashboard = (props) => {
       .catch((err) => console.error(err));
   };
 
-  console.log(fieldTypes);
+  console.log(tableData);
 
   // if (!options.headers.authorization) {
   //   return <Loading />;
