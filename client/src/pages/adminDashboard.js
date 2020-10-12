@@ -1,25 +1,28 @@
-import React, { useEffect, useState } from "react";
+import React, { useMemo, useEffect, useState } from "react";
 import axios from "axios";
 
-import TableDashboard from "../components/TableDashboard";
 import { Button } from "@material-ui/core";
 
 import { connect } from "react-redux";
 import * as actionCreators from "../actions";
 
-const initialAboutState = {
-  id: 0,
-  info: "",
-  description: "",
-  url: "",
-  about_stack: {
-    id: 0,
-    title: "",
-    about_id: 0,
-  },
-};
-
+import Table from "../components/Table";
+import "../css/AdminDashboard.css";
 const server = process.env.REACT_APP_API;
+
+const Stacks = ({ values }) => {
+  return (
+    <>
+      {values.map((stack, idx) => {
+        return (
+          <span key={idx} className="badge">
+            {stack.id + "." + stack.title + "\n"}
+          </span>
+        );
+      })}
+    </>
+  );
+};
 
 const AdminDashboard = (props) => {
   const [tableData, setTableData] = useState([]);
@@ -40,6 +43,41 @@ const AdminDashboard = (props) => {
     //   history.push("/");
     console.log("logout");
   };
+
+  const columnsAbout = useMemo(
+    () => [
+      {
+        // first group - About
+        Header: "About",
+        // First group columns
+        columns: [
+          {
+            Header: "Id",
+            accessor: "id",
+          },
+          {
+            Header: "Description",
+            accessor: "description",
+          },
+          {
+            Header: "Info",
+            accessor: "info",
+          },
+          {
+            Header: "Stack",
+            accessor: "stack",
+            Cell: ({ cell: { value } }) => <Stacks values={value} />,
+          },
+        ],
+      },
+    ],
+    []
+  );
+
+  // console.log(tableData);
+  if (!tableData.about) {
+    return <p>Loading</p>;
+  }
   return (
     <section className="dashboard">
       <div className="inner">
@@ -47,8 +85,10 @@ const AdminDashboard = (props) => {
           Logout
         </Button>
         <br />
-        <br />
-        <h1>About</h1>
+
+        <div className="App">
+          <Table columns={columnsAbout} data={tableData.about} />
+        </div>
       </div>
     </section>
   );
